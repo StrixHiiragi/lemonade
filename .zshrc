@@ -1,30 +1,40 @@
-[[ $(tty) = "/dev/tty1" ]] && exec startx
-
-export ZSH="/home/strix/.oh-my-zsh"
-
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
-
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶ "
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-
-POWERLEVEL9K_CUSTOM_FEDORA_ICON="echo ﰁ"
-POWERLEVEL9K_CUSTOM_FEDORA_ICON_BACKGROUND=171
-POWERLEVEL9K_CUSTOM_FEDORA_ICON_FOREGROUND=015
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_fedora_icon dir vcs)
-
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+alias zshconfig="doas vim ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zt="doas emerge -av --jobs"
+alias ztr="doas emerge -Cav --jobs"
+alias ztu="doas ego sync && doas emerge -auvDN @world"
+alias ztetc="doas etc-update --automode -5"
 alias ls="lsd"
-alias zshconfig="doas nvim ~/.zshrc"
-alias ohmyzsh="doas nvim ~/.oh-my-zsh"
-alias xi="doas emerge -av --jobs"
-alias xr="doas emerge -Cav --jobs"
-alias xiu="doas ego sync && doas emerge -auvDN @world"
-alias etcu="doas etc-update --automode -5"
-## alias zt="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
