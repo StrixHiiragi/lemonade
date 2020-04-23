@@ -1,40 +1,26 @@
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="doas vim ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias zt="doas emerge -av --jobs"
-alias ztr="doas emerge -Cav --jobs"
-alias ztu="doas ego sync && doas emerge -auvDN @world"
-alias ztetc="doas etc-update --automode -5"
+# aliases
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias gs="XDG_SESSION_TYPE=wayland dbus-run-session gnome-session"
 alias ls="lsd"
+alias zt="doas xbps-install -S"
+alias ztq="doas xbps-query -Rs"
+alias ztr="doas xbps-remove"
+alias ztrr="doas xbps-remove -R"
+alias ztu="doas xbps-install -Su"
+alias zto"doas xbps-remove -O"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
